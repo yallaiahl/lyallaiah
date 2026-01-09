@@ -13,7 +13,6 @@ C:/Users/Admin/Desktop/rf-mcp/.venv/Scripts/python.exe -m robot.run tests/first.
 ```
 
 Flipkart add-to-cart test
--------------------------
 
 Install required browser dependencies (example using Chrome):
 
@@ -30,5 +29,13 @@ C:/Users/Admin/Desktop/rf-mcp/.venv/Scripts/robot.exe tests/flipkart_add.robot
 ```
 
 Notes:
-- The test opens https://www.flipkart.com, closes the login modal if present, searches for `${PRODUCT}` and attempts to add the first product to cart.
-- Web pages and element locators on Flipkart may change; adjust XPath/CSS selectors if steps fail.
+## CI checklist
+
+- Ensure `robotmcp_project/requirements.txt` is up-to-date and includes `robotframework` and any extra libraries (e.g. `selenium`, `webdriver-manager`).
+- Ensure `robotmcp_project/tests/` contains the Robot suites to run.
+- Ensure `robotmcp_project/resources/` contains any shared resources or keywords referenced by tests.
+- Check that `.github/workflows/robot-ci.yml` exists at the repository root and points to `robotmcp_project/tests`.
+- If tests require a browser, use headless mode and include `webdriver-manager` in `requirements.txt`.
+- After pushing, verify the GitHub Actions run and download the `robot-results` artifact (or inspect the `results/` directory if running locally).
+
+See `robotmcp_project/CI_REQUIREMENTS.md` for full details.

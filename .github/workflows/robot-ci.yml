@@ -21,21 +21,38 @@ jobs:
         run: |
           if [ -f robotmcp_project/requirements.txt ]; then pip install -r robotmcp_project/requirements.txt; else pip install robotframework; fi
 
-      - name: Run Robot Framework tests (robotmcp_project)
+      - name: Run Robot Framework tests (top-level and robotmcp_project)
         id: run-tests
         run: |
-          mkdir -p results
-          # run tests located in robotmcp_project/tests
-          robot --outputdir results robotmcp_project/tests || echo $? > rf_exit_code.txt
+          set -e
+          mkdir -p results/top-level
+          mkdir -p results/robotmcp_project
+
+          # Run top-level tests (if any)
+          if [ -d "tests" ]; then
+            if ls tests/*.robot 1> /dev/null 2>&1; then
+              robot --outputdir results/top-level tests || echo $? > rf_exit_code_top.txt
+            fi
+          fi
+
+          # Run tests in robotmcp_project
+          if [ -d "robotmcp_project/tests" ]; then
+            if ls robotmcp_project/tests/*.robot 1> /dev/null 2>&1; then
+              robot --outputdir results/robotmcp_project robotmcp_project/tests || echo $? > rf_exit_code_sub.txt
+            fi
+          fi
 
       - name: Upload results
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: robot-results
-          path: results
+          path: |
+            results/top-level
+            results/robotmcp_project
 
       - name: Fail on test failures
         if: always()
         run: |
-          if [ -f rf_exit_code.txt ]; then exit $(cat rf_exit_code.txt); fi
+          if [ -f rf_exit_code_top.txt ]; then exit $(cat rf_exit_code_top.txt); fi
+          if [ -f rf_exit_code_sub.txt ]; then exit $(cat rf_exit_code_sub.txt); fi

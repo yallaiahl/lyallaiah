@@ -42,3 +42,20 @@ Notes and recommendations
 - Use tags (example: `robotmcp`) to allow selective test runs: `robot -i robotmcp ...`.
 
 If you want, I can also add a checklist to the repo's README linking to this document and show example workflow snippets for browser-based tests.
+
+## Next steps
+
+- Monitor the GitHub Actions run for branch `first` to verify workflow success and download the `robot-results` artifact.
+- Add a status badge to `README.md` referencing the workflow file (example badge URL shown below).
+- Configure GitHub Secrets for any credentials or tokens your tests need (do not store secrets in the repo).
+- If using browser tests, ensure headless mode is enabled in tests and consider running a matrix for different browsers/versions.
+- Add caching for Python dependencies in the workflow to speed up CI: use `actions/cache` for pip cache.
+- Add scheduled runs if you want nightly or periodic test execution (use `on: schedule` in the workflow).
+- Expand test reporting or notifications (Slack, email, etc.) if needed.
+
+Badge example (add to `README.md`):
+
+```
+[![Robot CI](https://github.com/yallaiahl/lyallaiah/actions/workflows/robot-ci.yml/badge.svg)](https://github.com/yallaiahl/lyallaiah/actions/workflows/robot-ci.yml)
+```
+

@@ -1,0 +1,41 @@
+name: Robot Framework CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  robot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          if [ -f robotmcp_project/requirements.txt ]; then pip install -r robotmcp_project/requirements.txt; else pip install robotframework; fi
+
+      - name: Run Robot Framework tests (robotmcp_project)
+        id: run-tests
+        run: |
+          mkdir -p results
+          # run tests located in robotmcp_project/tests
+          robot --outputdir results robotmcp_project/tests || echo $? > rf_exit_code.txt
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: robot-results
+          path: results
+
+      - name: Fail on test failures
+        if: always()
+        run: |
+          if [ -f rf_exit_code.txt ]; then exit $(cat rf_exit_code.txt); fi

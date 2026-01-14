@@ -28,7 +28,7 @@ Post Request Echoes Data
 
 *** Keywords ***
 Skip Api If Offline
-    Skip If    '%{CI}'.lower() in ('1','true')    API tests skipped in CI/offline environments
+    Skip If    '%{CI=false}'.lower() in ('1','true')    API tests skipped in CI/offline environments
 
 To Json
     [Arguments]    ${content}

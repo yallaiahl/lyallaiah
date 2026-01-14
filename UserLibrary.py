@@ -47,7 +47,7 @@ class UserLibrary:
         try:
             driver = self.create_chrome_webdriver(headless=headless)
         except Exception as exc:
-            logger.warn(f"Skipping Flipkart add-to-cart because WebDriver setup failed: {exc}")
+            logger.warning(f"Skipping Flipkart add-to-cart because WebDriver setup failed: {exc}")
             return f"SKIPPED: {exc}"
         try:
             driver.get("https://www.flipkart.com")
@@ -88,7 +88,7 @@ class UserLibrary:
             add_btn.click()
             return "OK"
         except Exception as exc:
-            logger.warn(f"Skipping Flipkart add-to-cart because navigation failed: {exc}")
+            logger.warning(f"Skipping Flipkart add-to-cart because navigation failed: {exc}")
             return f"SKIPPED: {exc}"
         finally:
             try:

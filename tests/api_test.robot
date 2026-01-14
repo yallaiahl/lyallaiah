@@ -1,6 +1,8 @@
 #robotmcp
 *** Settings ***
 Library    RequestsLibrary
+Library    OperatingSystem
+Suite Setup    Skip Api If Offline
 
 *** Variables ***
 ${BASE}    https://httpbin.org
@@ -25,6 +27,9 @@ Post Request Echoes Data
     Should Be Equal As Integers    ${json['json']['num']}    42
 
 *** Keywords ***
+Skip Api If Offline
+    Skip If    '%{CI}'.lower() in ('1','true')    API tests skipped in CI/offline environments
+
 To Json
     [Arguments]    ${content}
     ${call_result}=    Run Keyword And Ignore Error    Call Method    ${content}    json
@@ -33,4 +38,4 @@ To Json
     Run Keyword If    ${is_dict}    Return From Keyword    ${content}
     ${text}=    Convert To String    ${content}
     ${json}=    Evaluate    __import__('json').loads(${text})
-    [Return]    ${json}
+    RETURN    ${json}

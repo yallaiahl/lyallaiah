@@ -1,0 +1,52 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start Robot MCP Server",
+      "type": "shell",
+      "command": "python -m robotmcp.server",
+      "isBackground": true,
+      "presentation": { "reveal": "silent", "panel": "shared" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Run Robot Tests (select)",
+      "type": "shell",
+      "command": "robot --pythonpath src --outputdir results ${input:testFile}",
+      "presentation": { "reveal": "always", "panel": "shared" },
+      "dependsOrder": "sequence",
+      "dependsOn": ["Start Robot MCP Server"]
+    }
+    ,
+    {
+      "label": "Run Robot Tests With Allure",
+      "type": "shell",
+      "command": "powershell -ExecutionPolicy Bypass -File .\\scripts\\run_with_allure.ps1 -Tests ${input:testFile}",
+      "presentation": { "reveal": "always", "panel": "shared" }
+    },
+    {
+      "label": "Setup Appium Environment",
+      "type": "shell",
+      "command": "powershell -ExecutionPolicy Bypass -File ${workspaceFolder}\\scripts\\setup_appium.ps1",
+      "presentation": { "reveal": "always", "panel": "shared" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Start Appium Server",
+      "type": "shell",
+      "command": "appium",
+      "isBackground": true,
+      "presentation": { "reveal": "silent", "panel": "shared" },
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "testFile",
+      "type": "pickString",
+      "description": "Choose test suite or folder to run",
+      "options": ["tests/day1_learnings.robot", "tests/site_numbers.robot", "tests"],
+      "default": "tests"
+    }
+  ]
+}

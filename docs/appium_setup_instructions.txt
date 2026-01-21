@@ -1,0 +1,135 @@
+Appium Setup Instructions (Windows)
+
+Follow these steps to install Appium and the required tools locally. Run commands in an elevated PowerShell where noted.
+
+1) Install Node.js (includes npm)
+- Download and install the LTS installer from https://nodejs.org/
+- After install, verify:
+  node --version
+  npm --version
+
+2) Install Appium server (global)
+  npm install -g appium
+  # verify
+  appium --version
+
+3) (Optional) Install Appium Desktop (GUI inspector)
+- Download from https://github.com/appium/appium-desktop/releases and install.
+
+4) Install Java JDK (11+)
+- Download OpenJDK or Oracle JDK and install.
+- Set `JAVA_HOME` environment variable to JDK install path and add `%JAVA_HOME%\bin` to `PATH`.
+  # verify
+  java -version
+
+5) Install Android SDK / Android Studio
+- Install Android Studio (recommended) and use SDK Manager to install:
+  - SDK Platform for Android version you target
+  - Android SDK Platform-Tools (adb)
+  - Android SDK Build-Tools
+  - Android Emulator (if using emulator)
+- Set environment variables (`User` or `System`):
+  ANDROID_SDK_ROOT = C:\Users\<you>\AppData\Local\Android\Sdk
+  Add `%ANDROID_SDK_ROOT%\platform-tools` and `%ANDROID_SDK_ROOT%\emulator` to `PATH`.
+  # verify
+  adb devices
+  emulator -list-avds
+
+6) Create or start an emulator (AVD) or connect a real device
+- Using Android Studio AVD Manager, create an AVD and start it, or run:
+  emulator -avd <AVD_NAME>
+- Verify device is listed:
+  adb devices
+
+7) Prepare Python virtual environment and install Robot/Appium libs
+  python -m venv .venv
+  .\.venv\Scripts\Activate.ps1
+  python -m pip install --upgrade pip
+  python -m pip install -r requirements.txt
+
+8) Run the project setup script (optional)
+  powershell -ExecutionPolicy Bypass -File .\scripts\setup_appium.ps1
+
+9) Start Appium server
+  # If Appium installed globally
+  appium
+  # Or start with options (relaxed security, specific port):
+  appium --relaxed-security --port 4723
+
+10) Run Robot tests (example)
+  # From project root
+  robot --pythonpath src --outputdir results tests/user_appium_example.robot
+
+Troubleshooting
+- "appium: command not found": ensure Node/npm installed and Appium installed globally; reopen terminal.
+- If Appium reports network or dependency errors during installation, ensure internet access and retry `npm install -g appium`.
+- If `adb` not found: ensure Android SDK platform-tools are installed and on `PATH`.
+- Port conflicts: Appium default port is 4723; stop other services or run Appium on another port.
+- Use Appium server logs (console) to debug session/capability errors.
+
+Notes
+- For iOS testing you need Xcode and XCUITest (macOS only).
+- CI: consider running Appium inside Docker or use cloud device providers (BrowserStack, Sauce Labs, etc.).
+
+If you want, I can also add step-by-step commands for installing Node.js, Java, and Android SDK with links and exact PowerShell commands.
+
+Detailed Step-by-Step PowerShell Commands (Windows)
+
+These commands are example steps you can paste into an elevated PowerShell prompt. Some commands use `winget` when available; otherwise use the installer links above.
+
+1) Install Node.js (LTS) with winget (or use installer from nodejs.org)
+  winget install OpenJS.NodeJS.LTS -e
+  node --version
+  npm --version
+
+2) Install Appium server globally
+  npm install -g appium
+  appium --version
+
+3) (Optional) Install Appium Desktop (GUI inspector)
+  # Download from GitHub releases and run installer, or use the installer GUI link above.
+
+4) Install Java (Temurin 11) with winget
+  winget install EclipseAdoptium.Temurin.11.JDK -e
+  # Set JAVA_HOME (replace path if different)
+  setx JAVA_HOME "C:\\Program Files\\Eclipse Adoptium\\jdk-11"
+  setx PATH "%PATH%;%JAVA_HOME%\\bin"
+  java -version
+
+5) Install Android Studio (recommended) with winget
+  winget install Google.AndroidStudio -e
+  # After install, open Android Studio -> SDK Manager -> install platform-tools, emulator, and a system image
+
+6) Configure Android SDK environment variables (example)
+  setx ANDROID_SDK_ROOT "%LOCALAPPDATA%\\Android\\Sdk"
+  setx PATH "%PATH%;%LOCALAPPDATA%\\Android\\Sdk\\platform-tools;%LOCALAPPDATA%\\Android\\Sdk\\emulator"
+  # Restart terminal to pick up PATH changes
+  adb devices
+  emulator -list-avds
+
+7) Install required Android system image and create AVD (use sdkmanager/avdmanager found in SDK tools)
+  sdkmanager "platform-tools" "platforms;android-31" "system-images;android-31;google_apis;x86_64"
+  sdkmanager --licenses
+  avdmanager create avd -n test_avd -k "system-images;android-31;google_apis;x86_64" --device "pixel"
+
+8) Start emulator
+  emulator -avd test_avd
+
+9) Prepare Python virtual environment and install project requirements
+  python -m venv .venv
+  .\.venv\Scripts\Activate.ps1
+  python -m pip install --upgrade pip
+  python -m pip install -r requirements.txt
+
+10) Start Appium server (in separate terminal)
+  appium --relaxed-security --port 4723
+
+11) Run the Robot test
+  robot --pythonpath src --outputdir results tests/user_appium_example.robot
+
+Notes & Tips
+- If `winget` is not available, download installers from the linked websites and run them.
+- After installing Node/Appium, restart your terminal so the `appium` command is available.
+- Use `sdkmanager --list` to see installed packages. If `sdkmanager` is not found, ensure Android SDK "tools" are installed and on PATH.
+- If `adb devices` shows a device in "unauthorized" state, accept the USB debugging dialog on the device.
+

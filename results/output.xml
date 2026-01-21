@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.1 (Python 3.12.4 on win32)" generated="2026-01-20T17:18:37.643753" rpa="false" schemaversion="5">
+<suite id="s1" name="Tests" source="C:\Users\Admin\Desktop\learn_mcp_AI\tests">
+<suite id="s1-s1" name="Day1 Learnings" source="C:\Users\Admin\Desktop\learn_mcp_AI\tests\day1_learnings.robot">
+<kw name="Log" owner="BuiltIn" type="SETUP">
+<msg time="2026-01-20T17:18:37.743385" level="INFO">Starting day1_learnings suite</msg>
+<arg>Starting day1_learnings suite</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-01-20T17:18:37.742388" elapsed="0.000997"/>
+</kw>
+<test id="s1-s1-t1" name="Log And Check Greeting" line="10">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-01-20T17:18:37.747375" level="INFO">Hello, Robot MCP</msg>
+<arg>${GREETING}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-01-20T17:18:37.746378" elapsed="0.001995"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${GREETING}</arg>
+<arg>Hello, Robot MCP</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-01-20T17:18:37.748373" elapsed="0.000997"/>
+</kw>
+<tag>day1</tag>
+<tag>RobotMCP</tag>
+<status status="PASS" start="2026-01-20T17:18:37.743385" elapsed="0.005985"/>
+</test>
+<test id="s1-s1-t2" name="Compare Strings Equal" line="15">
+<kw name="Compare Strings" owner="robotmcp_libs.string_compare.StringCompare">
+<arg>abc</arg>
+<arg>abc</arg>
+<doc>Compare two values as strings and return True if equal.</doc>
+<status status="PASS" start="2026-01-20T17:18:37.750195" elapsed="0.000000"/>
+</kw>
+<kw name="Assert Strings Equal" owner="robotmcp_libs.string_compare.StringCompare">
+<arg>abc</arg>
+<arg>abc</arg>
+<doc>Assert that two strings are equal. Raises AssertionError on mismatch.</doc>
+<status status="PASS" start="2026-01-20T17:18:37.750195" elapsed="0.000000"/>
+</kw>
+<tag>day1</tag>
+<tag>RobotMCP</tag>
+<status status="PASS" start="2026-01-20T17:18:37.750195" elapsed="0.000000"/>
+</test>
+<test id="s1-s1-t3" name="Compare Strings Case Insensitive" line="20">
+<kw name="Compare Strings" owner="robotmcp_libs.string_compare.StringCompare">
+<arg>Hello</arg>
+<arg>hello</arg>
+<arg>case_sensitive=False</arg>
+<doc>Compare two values as strings and return True if equal.</doc>
+<status status="PASS" start="2026-01-20T17:18:37.754201" elapsed="0.000000"/>
+</kw>
+<kw name="Assert Strings Equal" owner="robotmcp_libs.string_compare.StringCompare">
+<arg>Hello</arg>
+<arg>hello</arg>
+<arg>case_sensitive=False</arg>
+<doc>Assert that two strings are equal. Raises AssertionError on mismatch.</doc>
+<status status="PASS" start="2026-01-20T17:18:37.754201" elapsed="0.000997"/>
+</kw>
+<tag>day1</tag>
+<tag>RobotMCP</tag>
+<status status="PASS" start="2026-01-20T17:18:37.753203" elapsed="0.001995"/>
+</test>
+<test id="s1-s1-t4" name="Expected Failure Example" line="25">
+<kw name="Run Keyword And Expect Error" owner="BuiltIn">
+<kw name="Assert Strings Equal" owner="robotmcp_libs.string_compare.StringCompare">
+<msg time="2026-01-20T17:18:37.761323" level="FAIL">Strings not equal: left='a' right='b' case_sensitive=True</msg>
+<arg>a</arg>
+<arg>b</arg>
+<doc>Assert that two strings are equal. Raises AssertionError on mismatch.</doc>
+<status status="FAIL" start="2026-01-20T17:18:37.761323" elapsed="0.020507">Strings not equal: left='a' right='b' case_sensitive=True</status>
+</kw>
+<arg>*Strings not equal*</arg>
+<arg>Assert Strings Equal</arg>
+<arg>a</arg>
+<arg>b</arg>
+<doc>Runs the keyword and checks that the expected error occurred.</doc>
+<status status="PASS" start="2026-01-20T17:18:37.760325" elapsed="0.021505"/>
+</kw>
+<tag>day1</tag>
+<status status="PASS" start="2026-01-20T17:18:37.759326" elapsed="0.022504"/>
+</test>
+<status status="PASS" start="2026-01-20T17:18:37.727429" elapsed="0.056401"/>
+</suite>
+<suite id="s1-s2" name="Import Variables" source="C:\Users\Admin\Desktop\learn_mcp_AI\tests\import_variables.robot">
+<test id="s1-s2-t1" name="Import Variables Test" line="7">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-01-20T17:18:37.801422" level="INFO">Value of x: 10</msg>
+<arg>Value of x: ${x}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-01-20T17:18:37.800426" elapsed="0.000996"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-01-20T17:18:37.802420" level="INFO">Value of y: 20</msg>
+<arg>Value of y: ${y}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-01-20T17:18:37.801422" elapsed="0.000998"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-01-20T17:18:37.806410" level="INFO">Value of z: 30</msg>
+<arg>Value of z: ${z}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-01-20T17:18:37.806410" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-01-20T17:18:37.807407" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${x}</arg>
+<arg>10</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-01-20T17:18:37.807407" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-01-20T17:18:37.808403" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${y}</arg>
+<arg>20</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-01-20T17:18:37.808403" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-01-20T17:18:37.809401" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${z}</arg>
+<arg>30</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-01-20T17:18:37.808403" elapsed="0.000998"/>
+</kw>
+<status status="PASS" start="2026-01-20T17:18:37.800426" elapsed="0.008975"/>
+</test>
+<test id="s1-s2-t2" name="log list items" line="14">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-01-20T17:18:37.812363" level="INFO">List item 1: 1</msg>
+<arg>List item 1: ${my_list[0]}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-01-20T17:18:37.812363" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-01-20T17:18:37.812363" level="INFO">List item 2: 2</msg>
+<arg>List item 2: ${my_list[1]}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-01-20T17:18:37.812363" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-01-20T17:18:37.812363" level="INFO">List item 3: 3</msg>
+<arg>List item 3: ${my_list[2]}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-01-20T17:18:37.812363" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-01-20T17:18:37.822624" level="INFO">List item 4: 4</msg>
+<arg>List item 4: ${my_list[3]}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-01-20T17:18:37.812363" elapsed="0.010261"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-01-20T17:18:37.823618" level="INFO">List item 5: 5</msg>
+<arg>List item 5: ${my_list[4]}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-01-20T17:18:37.822624" elapsed="0.000994"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-01-20T17:18:37.825612" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${my_list[0]}</arg>
+<arg>1</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-01-20T17:18:37.824616" elapsed="0.000996"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-01-20T17:18:37.826610" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${my_list[1]}</arg>
+<arg>2</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-01-20T17:18:37.825612" elapsed="0.000998"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-01-20T17:18:37.828641" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${my_list[2]}</arg>
+<arg>3</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-01-20T17:18:37.827608" elapsed="0.001033"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-01-20T17:18:37.828641" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${my_list[3]}</arg>
+<arg>4</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-01-20T17:18:37.828641" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-01-20T17:18:37.828641" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${my_list[4]}</arg>
+<arg>5</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-01-20T17:18:37.828641" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2026-01-20T17:18:37.811397" elapsed="0.017244"/>
+</test>
+<status status="PASS" start="2026-01-20T17:18:37.786085" elapsed="0.042556"/>
+</suite>
+<suite id="s1-s3" name="Iphone Mcp" source="C:\Users\Admin\Desktop\learn_mcp_AI\tests\iphone_mcp.robot">
+<kw name="Open Browser To Default" type="SETUP">
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-01-20T17:18:38.486398" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
+<msg time="2026-01-20T17:18:38.486398" level="INFO">Cannot capture screenshot because no browser is open.</msg>
+<msg time="2026-01-20T17:18:38.486398" level="FAIL">ValueError: Unable to parse option: "add_argument=--start-maximized"</msg>
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+<arg>options=add_argument=--start-maximized</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="FAIL" start="2026-01-20T17:18:38.486398" elapsed="0.099964">ValueError: Unable to parse option: "add_argument=--start-maximized"</status>
+</kw>
+<arg>'${HEADLESS}'=='True'</arg>
+<arg>Open Browser</arg>
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+<arg>options=add_argument=--headless</arg>
+<arg>ELSE</arg>
+<arg>Open Browser</arg>
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+<arg>options=add_argument=--start-maximized</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="FAIL" start="2026-01-20T17:18:38.486398" elapsed="0.099964">ValueError: Unable to parse option: "add_argument=--start-maximized"</status>
+</kw>
+<kw name="Set Selenium Speed" owner="SeleniumLibrary">
+<arg>0.0s</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="NOT RUN" start="2026-01-20T17:18:38.586362" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2026-01-20T17:18:38.486398" elapsed="0.099964">ValueError: Unable to parse option: "add_argument=--start-maximized"</status>
+</kw>
+<test id="s1-s3-t1" name="iPhone Full Workflow" line="16">
+<doc>1) open flipcart 2) search iphone 13 3) select iphone13 black 128GB 4) add to cart
+5) cancel all items in cart 6) close flipkart 7) open amazon 8) search iphone
+9) select iphone 10) check price</doc>
+<status status="FAIL" start="2026-01-20T17:18:38.586362" elapsed="0.000000">Parent suite setup failed:
+ValueError: Unable to parse option: "add_argument=--start-maximized"</status>
+</test>
+<kw name="Close All Browsers" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2026-01-20T17:18:38.586362" elapsed="0.000000"/>
+</kw>
+<doc>Automates the requested Flipkart -&gt; Amazon iPhone workflow.</doc>
+<status status="FAIL" start="2026-01-20T17:18:37.828641" elapsed="0.757721">Suite setup failed:
+ValueError: Unable to parse option: "add_argument=--start-maximized"</status>
+</suite>
+<suite id="s1-s4" name="Open Google" source="C:\Users\Admin\Desktop\learn_mcp_AI\tests\open_google.robot">
+<kw name="Open Browser To Google" type="SETUP">
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-01-20T17:18:38.606574" level="INFO">Opening browser 'chrome' to base url 'https://www.google.com'.</msg>
+<msg time="2026-01-20T17:18:38.606574" level="INFO">Cannot capture screenshot because no browser is open.</msg>
+<msg time="2026-01-20T17:18:38.606574" level="FAIL">ValueError: Unable to parse option: "add_argument=--start-maximized"</msg>
+<arg>https://www.google.com</arg>
+<arg>${BROWSER}</arg>
+<arg>options=add_argument=--start-maximized</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="FAIL" start="2026-01-20T17:18:38.605575" elapsed="0.003991">ValueError: Unable to parse option: "add_argument=--start-maximized"</status>
+</kw>
+<arg>'${HEADLESS}'=='True'</arg>
+<arg>Open Browser</arg>
+<arg>https://www.google.com</arg>
+<arg>${BROWSER}</arg>
+<arg>options=add_argument=--headless</arg>
+<arg>ELSE</arg>
+<arg>Open Browser</arg>
+<arg>https://www.google.com</arg>
+<arg>${BROWSER}</arg>
+<arg>options=add_argument=--start-maximized</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="FAIL" start="2026-01-20T17:18:38.604578" elapsed="0.004988">ValueError: Unable to parse option: "add_argument=--start-maximized"</status>
+</kw>
+<status status="FAIL" start="2026-01-20T17:18:38.602582" elapsed="0.006984">ValueError: Unable to parse option: "add_argument=--start-maximized"</status>
+</kw>
+<test id="s1-s4-t1" name="Open Google Test" line="11">
+<doc>Open Google homepage and verify search box is present</doc>
+<status status="FAIL" start="2026-01-20T17:18:38.610563" elapsed="0.000000">Parent suite setup failed:
+ValueError: Unable to parse option: "add_argument=--start-maximized"</status>
+</test>
+<kw name="Close All Browsers" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2026-01-20T17:18:38.613553" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2026-01-20T17:18:38.586362" elapsed="0.027191">Suite setup failed:
+ValueError: Unable to parse option: "add_argument=--start-maximized"</status>
+</suite>
+<suite id="s1-s5" name="Sample Template" source="C:\Users\Admin\Desktop\learn_mcp_AI\tests\sample_template.robot">
+<test id="s1-s5-t1" name="sample tempalate" line="2">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>10</arg>
+<arg>10</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-01-20T17:18:38.648217" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-01-20T17:18:38.649214" level="FAIL">11 != 10</msg>
+<arg>11</arg>
+<arg>10</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="FAIL" start="2026-01-20T17:18:38.649214" elapsed="0.000997">11 != 10</status>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>12</arg>
+<arg>12</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-01-20T17:18:38.650211" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2026-01-20T17:18:38.645098" elapsed="0.006111">11 != 10</status>
+</test>
+<status status="FAIL" start="2026-01-20T17:18:38.615548" elapsed="0.062322"/>
+</suite>
+<suite id="s1-s6" name="Site Numbers" source="C:\Users\Admin\Desktop\learn_mcp_AI\tests\site_numbers.robot">
+<test id="s1-s6-t1" name="Site Contains Numbers 1 To 10" line="6">
+<kw name="Get Numbers From Page" owner="robotmcp_libs.site_checker.SiteChecker">
+<msg time="2026-01-20T17:18:40.933365" level="FAIL">Failed to fetch http://127.0.0.1:8000: &lt;urlopen error [WinError 10061] No connection could be made because the target machine actively refused it&gt;</msg>
+<var>${nums}</var>
+<arg>http://127.0.0.1:8000</arg>
+<doc>Fetches the given URL and returns a list of numbers (as strings) found on the page.</doc>
+<status status="FAIL" start="2026-01-20T17:18:38.736326" elapsed="2.269984">Failed to fetch http://127.0.0.1:8000: &lt;urlopen error [WinError 10061] No connection could be made because the target machine actively refused it&gt;</status>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${nums}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2026-01-20T17:18:41.006310" elapsed="0.000000"/>
+</kw>
+<kw name="Assert Numbers 1 To 10 Present" owner="robotmcp_libs.site_checker.SiteChecker">
+<arg>${nums}</arg>
+<doc>Asserts that the provided list of number-strings contains 1..10.</doc>
+<status status="NOT RUN" start="2026-01-20T17:18:41.006310" elapsed="0.000000"/>
+</kw>
+<tag>day1</tag>
+<tag>site</tag>
+<status status="FAIL" start="2026-01-20T17:18:38.734681" elapsed="2.272628">Failed to fetch http://127.0.0.1:8000: &lt;urlopen error [WinError 10061] No connection could be made because the target machine actively refused it&gt;</status>
+</test>
+<status status="FAIL" start="2026-01-20T17:18:38.700411" elapsed="2.307894"/>
+</suite>
+<suite id="s1-s7" name="String Compare Example" source="C:\Users\Admin\Desktop\learn_mcp_AI\tests\string_compare_example.robot">
+<test id="s1-s7-t1" name="Compare equal strings" line="5">
+<kw name="Compare Strings">
+<msg time="2026-01-20T17:18:41.018278" level="FAIL">No keyword with name 'Compare Strings' found.</msg>
+<var>${res}</var>
+<arg>Hello</arg>
+<arg>Hello</arg>
+<status status="FAIL" start="2026-01-20T17:18:41.018278" elapsed="0.000000">No keyword with name 'Compare Strings' found.</status>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${res}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2026-01-20T17:18:41.019275" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2026-01-20T17:18:41.015286" elapsed="0.003989">No keyword with name 'Compare Strings' found.</status>
+</test>
+<test id="s1-s7-t2" name="Compare case-insensitive" line="9">
+<kw name="Compare Strings">
+<msg time="2026-01-20T17:18:41.023265" level="FAIL">No keyword with name 'Compare Strings' found.</msg>
+<var>${res}</var>
+<arg>Hello</arg>
+<arg>hello</arg>
+<arg>False</arg>
+<status status="FAIL" start="2026-01-20T17:18:41.023265" elapsed="0.000000">No keyword with name 'Compare Strings' found.</status>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${res}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2026-01-20T17:18:41.023265" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2026-01-20T17:18:41.021271" elapsed="0.002991">No keyword with name 'Compare Strings' found.</status>
+</test>
+<test id="s1-s7-t3" name="Assert equal (keyword)" line="13">
+<kw name="Assert Strings Equal">
+<msg time="2026-01-20T17:18:41.029493" level="FAIL">No keyword with name 'Assert Strings Equal' found.</msg>
+<arg>foo</arg>
+<arg>foo</arg>
+<status status="FAIL" start="2026-01-20T17:18:41.029493" elapsed="0.000000">No keyword with name 'Assert Strings Equal' found.</status>
+</kw>
+<status status="FAIL" start="2026-01-20T17:18:41.025260" elapsed="0.005227">No keyword with name 'Assert Strings Equal' found.</status>
+</test>
+<status status="FAIL" start="2026-01-20T17:18:41.009302" elapsed="0.022285"/>
+</suite>
+<suite id="s1-s8" name="Userlibrary Example" source="C:\Users\Admin\Desktop\learn_mcp_AI\tests\userlibrary_example.robot">
+<test id="s1-s8-t1" name="Echo Keyword Works" line="5">
+<kw name="Echo" owner="robotmcp_libs.userlibrary.UserLibrary">
+<msg time="2026-01-20T17:18:41.067625" level="INFO">${msg} = Hello Robot</msg>
+<var>${msg}</var>
+<arg>Hello Robot</arg>
+<status status="PASS" start="2026-01-20T17:18:41.067625" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${msg}</arg>
+<arg>Hello Robot</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-01-20T17:18:41.068622" elapsed="0.000812"/>
+</kw>
+<status status="PASS" start="2026-01-20T17:18:41.066627" elapsed="0.003239"/>
+</test>
+<test id="s1-s8-t2" name="Add Numbers Works" line="9">
+<kw name="Add Numbers" owner="robotmcp_libs.userlibrary.UserLibrary">
+<msg time="2026-01-20T17:18:41.071862" level="INFO">${sum} = 5.0</msg>
+<var>${sum}</var>
+<arg>2</arg>
+<arg>3</arg>
+<status status="PASS" start="2026-01-20T17:18:41.071862" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2026-01-20T17:18:41.072860" level="INFO">Argument types are:
+&lt;class 'float'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${sum}</arg>
+<arg>5</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2026-01-20T17:18:41.071862" elapsed="0.000998"/>
+</kw>
+<status status="PASS" start="2026-01-20T17:18:41.070863" elapsed="0.001997"/>
+</test>
+<test id="s1-s8-t3" name="Multiply Numbers Default" line="13">
+<kw name="Multiply Numbers" owner="robotmcp_libs.userlibrary.UserLibrary">
+<msg time="2026-01-20T17:18:41.073855" level="INFO">${prod} = 4.0</msg>
+<var>${prod}</var>
+<arg>4</arg>
+<status status="PASS" start="2026-01-20T17:18:41.073855" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2026-01-20T17:18:41.074852" level="INFO">Argument types are:
+&lt;class 'float'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${prod}</arg>
+<arg>4</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2026-01-20T17:18:41.073855" elapsed="0.000997"/>
+</kw>
+<status status="PASS" start="2026-01-20T17:18:41.073855" elapsed="0.000997"/>
+</test>
+<test id="s1-s8-t4" name="Multiply Numbers Two Args" line="17">
+<kw name="Multiply Numbers" owner="robotmcp_libs.userlibrary.UserLibrary">
+<msg time="2026-01-20T17:18:41.075849" level="INFO">${prod2} = 8.0</msg>
+<var>${prod2}</var>
+<arg>4</arg>
+<arg>2</arg>
+<status status="PASS" start="2026-01-20T17:18:41.075849" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2026-01-20T17:18:41.076849" level="INFO">Argument types are:
+&lt;class 'float'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${prod2}</arg>
+<arg>8</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2026-01-20T17:18:41.076849" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2026-01-20T17:18:41.075849" elapsed="0.001000"/>
+</test>
+<status status="PASS" start="2026-01-20T17:18:41.033326" elapsed="0.045581"/>
+</suite>
+<status status="FAIL" start="2026-01-20T17:18:37.646743" elapsed="3.433159"/>
+</suite>
+<statistics>
+<total>
+<stat pass="10" fail="7" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="4" fail="1" skip="0">day1</stat>
+<stat pass="3" fail="0" skip="0">RobotMCP</stat>
+<stat pass="0" fail="1" skip="0">site</stat>
+</tag>
+<suite>
+<stat name="Tests" id="s1" pass="10" fail="7" skip="0">Tests</stat>
+<stat name="Day1 Learnings" id="s1-s1" pass="4" fail="0" skip="0">Tests.Day1 Learnings</stat>
+<stat name="Import Variables" id="s1-s2" pass="2" fail="0" skip="0">Tests.Import Variables</stat>
+<stat name="Iphone Mcp" id="s1-s3" pass="0" fail="1" skip="0">Tests.Iphone Mcp</stat>
+<stat name="Open Google" id="s1-s4" pass="0" fail="1" skip="0">Tests.Open Google</stat>
+<stat name="Sample Template" id="s1-s5" pass="0" fail="1" skip="0">Tests.Sample Template</stat>
+<stat name="Site Numbers" id="s1-s6" pass="0" fail="1" skip="0">Tests.Site Numbers</stat>
+<stat name="String Compare Example" id="s1-s7" pass="0" fail="3" skip="0">Tests.String Compare Example</stat>
+<stat name="Userlibrary Example" id="s1-s8" pass="4" fail="0" skip="0">Tests.Userlibrary Example</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2026-01-20T17:18:41.013291" level="WARN">Imported library 'C:\Users\Admin\Desktop\learn_mcp_AI\src\robotmcp_libs\string_compare.py' contains no keywords.</msg>
+</errors>
+</robot>

@@ -1,0 +1,5 @@
+# Robot Framework argument file (example)
+# Use with: robot --argumentfile tests/robot_args.txt <tests>
+--variable TEST_MESSAGE:Hello from argfile
+--variable NUM1:7
+--variable NUM2:3

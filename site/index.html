@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Number Generator — Day1</title>
+  <style>
+    body { font-family: Arial, Helvetica, sans-serif; padding: 2rem; }
+    button { padding: 0.5rem 1rem; font-size: 1rem; }
+    #output { margin-top: 1rem; }
+  </style>
+</head>
+<body>
+  <h1>Number Generator — 1 to 10</h1>
+  <p>This small test page generates numbers from 1 to 10 and displays them.</p>
+  <button id="gen">Generate numbers</button>
+  <div id="output" aria-live="polite"></div>
+
+  <script>
+    function generateNumbers(n) {
+      const arr = [];
+      for (let i = 1; i <= n; i++) arr.push(i);
+      return arr;
+    }
+
+    function render(list) {
+      const out = document.getElementById('output');
+      out.innerHTML = '';
+      const ul = document.createElement('ul');
+      list.forEach(x => {
+        const li = document.createElement('li');
+        li.textContent = x;
+        ul.appendChild(li);
+      });
+      out.appendChild(ul);
+    }
+
+    document.getElementById('gen').addEventListener('click', () => {
+      const nums = generateNumbers(10);
+      render(nums);
+    });
+
+    // optional: auto-generate on load
+    window.addEventListener('load', () => render(generateNumbers(10)));
+  </script>
+</body>
+</html>

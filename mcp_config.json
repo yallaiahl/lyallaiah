@@ -1,0 +1,26 @@
+{
+  "servers": {
+    "robotmcp": {
+      "type": "stdio",
+      "command": "python",
+      "args": ["-m", "robotmcp.server"],
+      "env": {
+        "ROBOTMCP_ATTACH_HOST": "127.0.0.1",
+        "ROBOTMCP_ATTACH_PORT": "7317",
+        "ROBOTMCP_ATTACH_TOKEN": "change-me",
+        "ROBOTMCP_ATTACH_DEFAULT": "auto"
+      }
+    }
+  },
+  "appium": {
+    "host": "127.0.0.1",
+    "port": 4723,
+    "path": "/wd/hub",
+    "startCommand": "appium",
+    "defaultCapabilities": {
+      "platformName": "Android",
+      "deviceName": "emulator-5554",
+      "automationName": "UiAutomator2"
+    }
+  }
+}

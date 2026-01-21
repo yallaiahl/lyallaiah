@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    name: Install deps and run Robot tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Setup Node (for Appium CLI availability)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Export PYTHONPATH
+        run: echo "PYTHONPATH=${{ github.workspace }}/src" >> $GITHUB_ENV
+
+      - name: Show environment
+        run: |
+          echo "PYTHONPATH=$PYTHONPATH"
+          python --version
+          robot --version || true
+
+      - name: Run Robot Framework tests (exclude Appium)
+        run: |
+          # Runs tests in the `tests` folder using project src on PYTHONPATH
+          # Exclude tests tagged with 'appium' because Appium requires devices/emulators
+          robot --pythonpath src --exclude appium tests
+
+# NOTE: Appium-based Robot tests require Android emulators / Java and
+# device access. Running Appium tests in GitHub-hosted runners requires
+# extra setup (Android SDK, emulator images, AVD start) or a self-hosted
+# runner with devices. Consider adding a separate job that runs on
+# self-hosted runners when you need to run Appium tests.
